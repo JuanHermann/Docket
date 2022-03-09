@@ -1,0 +1,41 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8"/>
+  <title>Home</title>
+
+  <link th:rel="stylesheet" th:href="@{/webjars/bootstrap/4.0.0-2/css/bootstrap.min.css} "/>
+</head>
+<body>
+<div th:switch="${cartorios}">
+  <h2 th:case="null">Nenhum cartorio cadastrado!</h2>
+  <div th:case="*">
+    <h2>Cartorios</h2>
+    <table>
+      <thead>
+      <tr>
+        <th>Nome</th>
+        <th>Endereço</th>
+        <th>Editar</th>
+        <th>Deletar</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr th:each="cartorio : ${cartorios}">
+        <td th:text="${cartorio.nome}"></td>
+        <td th:text="${cartorio.endereco}"></td>
+        <td><a th:href="@{/insert-update/{id}(id=${cartorio.id})}">Edit</a></td>
+        <td><a th:href="@{/delete/{id}(id=${cartorio.id})}">Delete</a></td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+  <p><a href="/insert-update">Adicionar novo cartorio</a></p>
+</div>
+
+<script th:src="@{/webjars/jquery/3.0.0/jquery.min.js}"></script>
+<script th:src="@{/webjars/popper.js/1.12.9-1/umd/popper.min.js}"></script>
+<script th:src="@{/webjars/bootstrap/4.0.0-2/js/bootstrap.min.js}"></script>
+
+</body>
+</html>
