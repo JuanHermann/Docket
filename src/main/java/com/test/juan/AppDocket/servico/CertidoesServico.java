@@ -17,7 +17,7 @@ public class CertidoesServico {
     private CeritdaoRepository repository;
 
 
-    @Scheduled(cron = "0 0/5 * 1/1 * ?")
+    @Scheduled(fixedRate = 1000)
     public void atualizarDados() {
 
         try {

@@ -38,7 +38,7 @@ public class CartorioControllerPage {
     @PostMapping("/insert-update")
     public String cadastro(@ModelAttribute Cartorio cartorio, ModelMap model) {
         repository.save(cartorio);
-        return home(model);
+        return "redirect:/";
     }
 
 
@@ -56,6 +56,6 @@ public class CartorioControllerPage {
         Cartorio cartorio = repository.findById(id)
                 .orElseThrow(() -> new IllegalArgumentException("id cartorio invalido:" + id));
         repository.delete(cartorio);
-        return "redirect:/index";
+        return "redirect:/";
     }
 }

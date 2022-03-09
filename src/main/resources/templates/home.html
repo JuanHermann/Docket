@@ -4,26 +4,28 @@
   <meta charset="UTF-8"/>
   <title>Home</title>
 
-  <link th:rel="stylesheet" th:href="@{/webjars/bootstrap/4.0.0-2/css/bootstrap.min.css} "/>
+  <link th:rel="stylesheet" th:href="@{/webjars/bootstrap/5.1.1/css/bootstrap.min.css} "/>
 </head>
 <body>
 <div th:switch="${cartorios}">
   <h2 th:case="null">Nenhum cartorio cadastrado!</h2>
   <div th:case="*">
     <h2>Cartorios</h2>
-    <table>
+    <table class="table">
       <thead>
       <tr>
-        <th>Nome</th>
-        <th>Endereço</th>
-        <th>Editar</th>
-        <th>Deletar</th>
+        <th scope="col">Nome</th>
+        <th scope="col">Endereço</th>
+        <th scope="col">Certidões</th>
+        <th scope="col">Editar</th>
+        <th scope="col">Deletar</th>
       </tr>
       </thead>
       <tbody>
       <tr th:each="cartorio : ${cartorios}">
         <td th:text="${cartorio.nome}"></td>
         <td th:text="${cartorio.endereco}"></td>
+        <td><a style="white-space: pre-line" th:each="certidao : ${cartorio.certidao}" th:text="${certidao.nome}"><br/></a></td>
         <td><a th:href="@{/insert-update/{id}(id=${cartorio.id})}">Edit</a></td>
         <td><a th:href="@{/delete/{id}(id=${cartorio.id})}">Delete</a></td>
       </tr>
@@ -33,9 +35,7 @@
   <p><a href="/insert-update">Adicionar novo cartorio</a></p>
 </div>
 
-<script th:src="@{/webjars/jquery/3.0.0/jquery.min.js}"></script>
-<script th:src="@{/webjars/popper.js/1.12.9-1/umd/popper.min.js}"></script>
-<script th:src="@{/webjars/bootstrap/4.0.0-2/js/bootstrap.min.js}"></script>
+<script th:src="@{/webjars/bootstrap/5.1.1/js/bootstrap.min.js}"></script>
 
 </body>
 </html>
