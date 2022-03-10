@@ -2,7 +2,7 @@ package com.test.juan.AppDocket.controllers.page;
 
 import com.test.juan.AppDocket.models.Cartorio;
 import com.test.juan.AppDocket.repositorys.CartorioRepository;
-import com.test.juan.AppDocket.services.CartorioService;
+import com.test.juan.AppDocket.repositorys.CeritdaoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -15,15 +15,15 @@ import org.springframework.web.bind.annotation.PostMapping;
 public class CartorioControllerPage {
 
     @Autowired(required = false)
-    private CartorioService service;
+    private CartorioRepository repository;
 
     @Autowired(required = false)
-    private CartorioRepository repository;
+    private CeritdaoRepository ceritdaoRepository;
 
     @GetMapping("/")
     public String home(ModelMap model) {
 
-        model.addAttribute("cartorios", service.listAll());
+        model.addAttribute("cartorios", repository.findAll());
 
         return "home";
     }
@@ -31,6 +31,7 @@ public class CartorioControllerPage {
     @GetMapping("/insert-update")
     public String showForm(ModelMap model) {
         model.addAttribute("cartorio", new Cartorio());
+        model.addAttribute("certidoes", ceritdaoRepository.findAll());
 
         return "insert-update";
     }
@@ -48,6 +49,7 @@ public class CartorioControllerPage {
                 .orElseThrow(() -> new IllegalArgumentException("id cartorio invalido:" + id));
 
         model.addAttribute("cartorio", cartorio);
+        model.addAttribute("certidoes", ceritdaoRepository.findAll());
         return "insert-update";
     }
 

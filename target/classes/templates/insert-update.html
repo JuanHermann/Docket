@@ -9,8 +9,18 @@
 <form action="#" th:action="@{/insert-update}" th:object="${cartorio}" method="post">
     <p>ID: <input readonly type="text" th:field="*{id}"/></p>
     <p>Nome: <input type="text" th:field="*{nome}"/></p>
-    <p>endereço: <input type="text" th:field="*{endereco}"/></p>
-    <p><input type="submit" value="Submit"/></p>
+    <p>Endereço: <input type="text" th:field="*{endereco}"/></p>
+    <p>Certidões: <input type="checkbox" name="certidoes"
+                        th:each="certidoes : ${certidoes}"
+                        th:text="${certidoes.nome}"
+                        th:value="${certidoes.id}"
+                        th:field="*{certidao}"
+    /></p>
+
+    <p><input class="btn btn-success"  type="submit" value="Submit"/></p>
 </form>
+
+<script th:src="@{/webjars/bootstrap/5.1.1/js/bootstrap.min.js}"></script>
+
 </body>
 </html>

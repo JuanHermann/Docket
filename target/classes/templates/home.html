@@ -9,9 +9,9 @@
 <body>
 <div th:switch="${cartorios}">
   <h2 th:case="null">Nenhum cartorio cadastrado!</h2>
-  <div th:case="*">
-    <h2>Cartorios</h2>
-    <table class="table">
+  <div style="margin:40px" th:case="*">
+    <h2 style="text-align: center;">Cartórios</h2>
+    <table class="table table-striped" >
       <thead>
       <tr>
         <th scope="col">Nome</th>
@@ -26,13 +26,13 @@
         <td th:text="${cartorio.nome}"></td>
         <td th:text="${cartorio.endereco}"></td>
         <td><a style="white-space: pre-line" th:each="certidao : ${cartorio.certidao}" th:text="${certidao.nome}"><br/></a></td>
-        <td><a th:href="@{/insert-update/{id}(id=${cartorio.id})}">Edit</a></td>
-        <td><a th:href="@{/delete/{id}(id=${cartorio.id})}">Delete</a></td>
+        <td><a type="button" class="btn btn-warning" th:href="@{/insert-update/{id}(id=${cartorio.id})}">Editar</a></td>
+        <td><a type="button" class="btn btn-danger" th:href="@{/delete/{id}(id=${cartorio.id})}">Deletar</a></td>
       </tr>
       </tbody>
     </table>
   </div>
-  <p><a href="/insert-update">Adicionar novo cartorio</a></p>
+  <p  style="margin:40px" ><a type="button" class="btn btn-success" href="/insert-update">Adicionar novo cartorio</a></p>
 </div>
 
 <script th:src="@{/webjars/bootstrap/5.1.1/js/bootstrap.min.js}"></script>

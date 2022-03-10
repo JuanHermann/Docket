@@ -2,7 +2,6 @@ package com.test.juan.AppDocket.services;
 
 import com.test.juan.AppDocket.models.Cartorio;
 import com.test.juan.AppDocket.repositorys.CartorioRepository;
-import com.test.juan.AppDocket.repositorys.CeritdaoRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
